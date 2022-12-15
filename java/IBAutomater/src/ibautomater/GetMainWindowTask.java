@@ -55,7 +55,9 @@ public class GetMainWindowTask implements Callable<Window> {
                     // when the main window is found and is ready,
                     // save it for future use and open the configuration window
                     this.automater.setMainWindow(w);
+                    this.automater.logMessage("Clicking 'Configure -> Settings'...");
                     menuItem.doClick();
+                    this.automater.logMessage("Clicked on 'Configure -> Settings'. Returning...");
 
                     return w;
                 }

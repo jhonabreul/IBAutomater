@@ -98,6 +98,7 @@ public class WindowEventListener implements AWTEventListener {
             this.automater.logMessage("Window event: [" + this.handledEvents.get(eventId) + "] - Window title: [" + Common.getTitle(window) + "] - Window name: [" + window.getName() + "]");
         }
         else {
+            this.automater.logMessage("Unhandled window event: [" + this.handledEvents.get(eventId) + "] - Window title: [" + Common.getTitle(window) + "] - Window name: [" + window.getName() + "]");
             return;
         }
 
@@ -586,6 +587,8 @@ public class WindowEventListener implements AWTEventListener {
      * @return Returns true if the window was detected and handled
      */
     private boolean HandleConfigurationWindow(Window window, int eventId) throws Exception {
+        this.automater.logMessage("Handling configuration window event...");
+
         if (eventId != WindowEvent.WINDOW_OPENED) {
             return false;
         }
@@ -594,6 +597,8 @@ public class WindowEventListener implements AWTEventListener {
         if (title == null || !title.contains(" Configuration")) {
             return false;
         }
+
+        this.automater.logMessage("Configuration window was opened, handling event...");
 
         JTree tree = Common.getTree(window);
         if (tree == null) {
